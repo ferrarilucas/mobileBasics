@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">mobileBasics</string>
+    <string name="user_screen">Usuários</string>
+    <string name="title_activity_posts">postsActivity</string>
 </resources>
