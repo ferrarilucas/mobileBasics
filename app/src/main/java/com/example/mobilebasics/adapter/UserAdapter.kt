@@ -35,6 +35,7 @@ class UserAdapter(val userList: ArrayList<User>, val context:Context) : Recycler
         holder.TextView.setOnClickListener {
             val intent = Intent(context, postsActivity::class.java)
             intent.putExtra("userId", user.id);
+            intent.putExtra("userName", user.name);
             startActivity(context, intent, null);
             println("User: $user")
         }

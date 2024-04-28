@@ -7,7 +7,7 @@
 
     <Button
         android:id="@+id/user_button"
-        app:backgroundTint="@color/buttonColor"
+        app:backgroundTint="@color/Primary"
         android:textColor="@android:color/white"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

@@ -5,16 +5,18 @@ import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.toolbox.JsonArrayRequest
 import com.android.volley.toolbox.Volley
+import com.example.mobilebasics.adapter.PostsAdapter
+import com.example.mobilebasics.databinding.ActivityPostsBinding
 import com.example.mobilebasics.model.Post
 
-class PostsData (val context:Context): ArrayList<Post>(){
+class PostsData (val context:Context, val userId:Int, val userName:String, val binding: ActivityPostsBinding): ArrayList<Post>(){
     val postList: ArrayList<Post> = ArrayList()
     val requestQueue: RequestQueue = Volley.newRequestQueue(context)
     init {
         getPosts()
     }
     fun getPosts(){
-        val apiUrl = "https://jsonplaceholder.typicode.com/posts"
+        val apiUrl = "https://jsonplaceholder.typicode.com/posts?userId=$userId"
         val request = JsonArrayRequest(
             Request.Method.GET, apiUrl, null,
             { response ->
@@ -30,6 +32,7 @@ class PostsData (val context:Context): ArrayList<Post>(){
                     )
                     postList.add(Post)
                 }
+                binding.recyclerViewPost.adapter = PostsAdapter(postList, userName,context)
             },
             { error ->
                 println("Error: $error")
