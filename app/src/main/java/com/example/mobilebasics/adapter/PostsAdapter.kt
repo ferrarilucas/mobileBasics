@@ -9,12 +9,10 @@ import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
-import com.example.mobilebasics.CommentsActivity
+import com.example.mobilebasics.CommentActivity
 import com.example.mobilebasics.R
-import com.example.mobilebasics.data.UsersData
 import com.example.mobilebasics.model.Post
-import com.example.mobilebasics.model.User
-import com.example.mobilebasics.postsActivity
+import java.io.Serializable
 
 class PostsAdapter(val postList: ArrayList<Post>, val userName: String, val context:Context) : RecyclerView.Adapter<PostsAdapter.UserViewHolder>()  {
     class UserViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
@@ -39,8 +37,8 @@ class PostsAdapter(val postList: ArrayList<Post>, val userName: String, val cont
         holder.title.setText(post.title)
         holder.body.setText(post.body)
         holder.post_card.setOnClickListener {
-            val intent = Intent(context, CommentsActivity::class.java)
-            intent.putExtra("PostId", post.id);
+            val intent = Intent(context, CommentActivity::class.java)
+            intent.putExtra("Post", post as Serializable);
 
             startActivity(context, intent, null);
             println("Post: $post")
